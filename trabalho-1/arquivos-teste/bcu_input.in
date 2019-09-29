@@ -1,0 +1,6 @@
+5
+sibiu fagaras 99 rimnicu 80
+fagaras bucharest 211 sibiu 99
+rimnicu sibiu 80 pitesti 97 
+pitesti rimnicu 97 bucharest 101
+bucharest pitesti 101 fagaras 211
