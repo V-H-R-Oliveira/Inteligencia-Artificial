@@ -11,11 +11,9 @@ if __name__ == "__main__":
         inicio = sys.argv[1]
         fim = sys.argv[2]
         profundidade = int(sys.argv[3])
-        grafo.busca_custo_uniforme(inicio, fim)
+        grafo.busca_profundidade(inicio, fim)
+        grafo.busca_custo_uniforme(inicio, fim)        
         grafo.busca_extensao(inicio, fim)
-        grafo.busca_profundidade(inicio)
-        print("\x1B[01;95m[Busca em profundidade] Ordem de visita da busca em profundidade {}\n e o seu custo é {}\x1B[0m".format( 
-               grafo.ordemVisita[:len(grafo.ordemVisita) - 4], grafo.custoProfundidade))
         grafo.dls(inicio, fim, profundidade)
         grafo.iddfs(inicio, fim, profundidade)
     else:
