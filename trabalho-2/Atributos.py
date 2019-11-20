@@ -7,10 +7,12 @@ class Atributos(AbstractBase):
         self.__atributos: dict = {}
     
     def __repr__(self):
-        return "Atributo: {}".format(self.__atributos) 
+        return "Atributos: {}".format(self.__atributos)
+
+    def getAtributos(self) -> dict:
+        return self.__atributos 
 
     def readFile(self):
-        aux = tuple()
         PATH: str = os.getcwd() + "/data/{}".format(self.filename)
         with open(PATH, newline='') as csvfile:
             content: str = csv.reader(csvfile, delimiter=",")
@@ -18,7 +20,7 @@ class Atributos(AbstractBase):
                 if index == 0:
                     continue
                 elif len(self.__atributos) <= 0:
-                    self.__atributos[index - 1] = (row[0], row[1], row[2])
+                    self.__atributos[index - 1] = tuple(row)
                 else:
-                    aux = {index-1:(row[0], row[1], row[2])}
+                    aux = {index-1:tuple(row)}
                     self.__atributos.update(aux)

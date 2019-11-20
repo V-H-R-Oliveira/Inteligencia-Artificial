@@ -1,17 +1,17 @@
 import csv, os
 from AbstractBase import AbstractBase
 
-class Pesos(AbstractBase):
+class Casos(AbstractBase):
     def __init__(self, filename):
         super().__init__(filename)
-        self.__pesos: dict = {}
+        self.__casos: dict = {}
     
     def __repr__(self):
-        return "Pesos: {}".format(self.__pesos)
-
-    def getPesos(self) -> dict:
-        return self.__pesos 
+        return "Casos: {}".format(self.__casos) 
     
+    def getCasos(self) -> dict:
+        return self.__casos
+
     def readFile(self):
         PATH: str = os.getcwd() + "/data/{}".format(self.filename)
         with open(PATH, newline='') as csvfile:
@@ -19,8 +19,8 @@ class Pesos(AbstractBase):
             for index, row in enumerate(content):
                 if index == 0:
                     continue
-                elif len(self.__pesos) <= 0:
-                    self.__pesos[row[0]] = row[1]
+                elif len(self.__casos) <= 0 :
+                    self.__casos[index - 1] = tuple(row)
                 else:
-                    aux = {row[0]:row[1]}
-                    self.__pesos.update(aux)
+                    aux = { index-1: tuple(row) }
+                    self.__casos.update(aux)
