@@ -11,7 +11,7 @@ class Atributos(AbstractBase):
 
     def readFile(self):
         aux = tuple()
-        PATH: str = os.getcwd() + "/{}".format(self.filename)
+        PATH: str = os.getcwd() + "/data/{}".format(self.filename)
         with open(PATH, newline='') as csvfile:
             content: str = csv.reader(csvfile, delimiter=",")
             for index, row in enumerate(content):
@@ -22,5 +22,3 @@ class Atributos(AbstractBase):
                 else:
                     aux = {index-1:(row[0], row[1], row[2])}
                     self.__atributos.update(aux)
-        
-        print(self.__atributos)

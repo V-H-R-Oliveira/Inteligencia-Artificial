@@ -11,7 +11,7 @@ class Pesos(AbstractBase):
     
     def readFile(self):
         aux: dict = {}
-        PATH: str = os.getcwd() + "/{}".format(self.filename)
+        PATH: str = os.getcwd() + "/data/{}".format(self.filename)
         with open(PATH, newline='') as csvfile:
             content: str = csv.reader(csvfile, delimiter=",")
             for index, row in enumerate(content):
