@@ -19,11 +19,11 @@ def getUserInput() -> str:
     elif op == 1:
         areaDamage = "scatterred"
     elif op == 2:
-        areaDamage = "low-areas"
+        areaDamage = "low_areas"
     elif op == 3:
-        areaDamage = "upper-areas"
+        areaDamage = "upper_areas"
     elif op == 4:
-        areaDamage = "while-field"
+        areaDamage = "while_field"
     else: 
         raise AttributeError("Atributo inválido")    
     return areaDamage

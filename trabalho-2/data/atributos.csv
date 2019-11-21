@@ -95,10 +95,10 @@ canker_lesion,3,tan
 fruiting_bodies,?,Desconhecido
 fruiting_bodies,0,Absent
 fruiting_bodies,1,Present
-external decay,?,Desconhecido
-external decay,0,Absent
-external decay,1,firm_and_dry
-external decay,2,watery
+external_decay,?,Desconhecido
+external_decay,0,Absent
+external_decay,1,firm_and_dry
+external_decay,2,watery
 mycelium,?,Desconhecido
 mycelium,0,Absent
 mycelium,1,Present
@@ -114,12 +114,12 @@ fruit_pods,0,Norm
 fruit_pods,1,Diseased
 fruit_pods,2,few_present
 fruit_pods,3,dna
-fruit spots,?,Desconhecido
-fruit spots,0,Absent
-fruit spots,1,Colored
-fruit spots,2,Brown_w/blk_specks
-fruit spots,3,Distort
-fruit spots,4,dna
+fruit_spots,?,Desconhecido
+fruit_spots,0,Absent
+fruit_spots,1,Colored
+fruit_spots,2,Brown_w/blk_specks
+fruit_spots,3,Distort
+fruit_spots,4,dna
 seed,?,Desconhecido
 seed,0,Norm
 seed,1,Abnorm
