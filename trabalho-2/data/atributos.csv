@@ -46,7 +46,7 @@ seed-tmt,1,fungicida
 seed-tmt,2,Outros
 germination,?,Desconhecido
 germination,0,90-100%
-germination,1,80-89 %
+germination,1,80-89%
 germination,2,lt-80%
 plant-growth,?,Desconhecido
 plant-growth,0,Norm

@@ -1,26 +1,27 @@
 import csv, os
 from AbstractBase import AbstractBase
+from Persistence import Persistence
 
 class Atributos(AbstractBase):
-    def __init__(self, filename):
+    def __init__(self, filename: str):
         super().__init__(filename)
-        self.__atributos: dict = {}
-    
-    def __repr__(self):
-        return "Atributos: {}".format(self.__atributos)
-
-    def getAtributos(self) -> dict:
-        return self.__atributos 
-
-    def readFile(self):
+        
+    def readFile(self) -> list:
+        data: list = []
         PATH: str = os.getcwd() + "/data/{}".format(self.filename)
         with open(PATH, newline='') as csvfile:
             content: str = csv.reader(csvfile, delimiter=",")
             for index, row in enumerate(content):
                 if index == 0:
                     continue
-                elif len(self.__atributos) <= 0:
-                    self.__atributos[index - 1] = tuple(row)
                 else:
-                    aux = {index-1:tuple(row)}
-                    self.__atributos.update(aux)
+                    data.append((index, row[0], row[1], row[2]))
+        return data
+    
+    def persist(self):
+        data: list = self.readFile()
+        try:
+            self.dbHandler.connect()
+            self.dbHandler.insert("atributos", data)
+        except Exception as e:
+            raise e
