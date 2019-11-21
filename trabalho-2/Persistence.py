@@ -43,10 +43,10 @@ class Persistence(object):
         else:
             raise AttributeError("O nome da tabela é inválido")
     
-    def fetchAtributos(self, tableName: str, element: str) -> list:
+    def fetchAtributos(self, element: str) -> list:
         data: list = []
         cursor = self.__conn.cursor()
-        QUERY: str = "SELECT valor FROM {} WHERE atributo='{}';".format(tableName, element)
+        QUERY: str = "SELECT valor FROM atributos WHERE atributo='{}';".format(element)
         try:
             cursor.execute(QUERY)
             self.__conn.commit()

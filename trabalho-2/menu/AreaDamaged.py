@@ -1,9 +1,9 @@
 from Persistence import Persistence
 
-def fetchData() -> tuple:
+def fetchData() -> list:
     dbHandler: Persistence = Persistence()
     dbHandler.connect()
-    data: list = dbHandler.fetchAtributos("atributos", "area_damaged")
+    data: list = dbHandler.fetchAtributos("area_damaged")
     return data
 
 def percorrerDados(data: list):
