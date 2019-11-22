@@ -1,15 +1,5 @@
-from Persistence import Persistence
-
-def fetchData() -> list:
-    dbHandler: Persistence = Persistence()
-    dbHandler.connect()
-    data: list = dbHandler.fetchAtributos("canker_lesion")
-    return data
-
-def percorrerDados(data: list):
-    for index, element in enumerate(data):
-        print("\x1b[1m", index, "|" ,element[0], "\x1b[0m")
-        print("--------------------")
+from menu.fetchData import fetchData
+from menu.showData import showData
 
 def getUserInput() -> str:
     op: int = int(input("\x1b[33mCanker Lesion: \x1b[0m"))
@@ -29,7 +19,7 @@ def getUserInput() -> str:
     return cankerLesion
 
 def cankerLesion() -> str:
-    data: list = fetchData()
-    percorrerDados(data)
+    data: list = fetchData("canker_lesion")
+    showData(data)
     cankerLesion: str = getUserInput()
     return cankerLesion

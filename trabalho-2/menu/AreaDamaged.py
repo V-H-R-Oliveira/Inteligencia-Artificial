@@ -1,15 +1,5 @@
-from Persistence import Persistence
-
-def fetchData() -> list:
-    dbHandler: Persistence = Persistence()
-    dbHandler.connect()
-    data: list = dbHandler.fetchAtributos("area_damaged")
-    return data
-
-def percorrerDados(data: list):
-    for index, element in enumerate(data):
-        print("\x1b[1m", index, "|" ,element[0], "\x1b[0m")
-        print("--------------------")
+from menu.fetchData import fetchData
+from menu.showData import showData
 
 def getUserInput() -> str:
     op: int = int(input("\x1b[33mArea Damage: \x1b[0m"))
@@ -31,7 +21,7 @@ def getUserInput() -> str:
 def areaDamaged() -> str:
     print("\x1b[32m Sistema RBC para classificação de doenças de Soja \x1b[0m")
     print('------------------------------------------------------------------')
-    data: list = fetchData()
-    percorrerDados(data)
+    data: list = fetchData("area_damaged")
+    showData(data)
     areaDamaged: str = getUserInput()
     return areaDamaged

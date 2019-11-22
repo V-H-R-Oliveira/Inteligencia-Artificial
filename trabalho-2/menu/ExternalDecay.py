@@ -1,10 +1,4 @@
-from Persistence import Persistence
-
-def fetchData() -> list:
-    dbHandler: Persistence = Persistence()
-    dbHandler.connect()
-    data: list = dbHandler.fetchAtributos("external_decay")
-    return data
+from menu.fetchData import fetchData
 
 def percorrerDados(data: list):
     for index, element in enumerate(data):
@@ -27,7 +21,7 @@ def getUserInput() -> str:
     return externalDecay
 
 def externalDecay() -> str:
-    data: list = fetchData()
+    data: list = fetchData("external_decay")
     percorrerDados(data)
     externalDecay: str = getUserInput()
     return externalDecay

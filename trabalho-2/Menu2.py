@@ -6,6 +6,16 @@ from menu.ExternalDecay import externalDecay
 from menu.FruitSpots import fruitSpots
 from menu.FruitingBodies import fruitingBodies
 from menu.FruitPods import fruitPods
+from menu.Germination import germination
+from menu.Hail import hail
+from menu.IntDiscolor import intDiscolor
+from menu.LeafMalf import leafMalf
+from menu.LeafMild import leafMild
+from menu.LeafShread import leafShread
+from menu.LeafspotsHalo import leafspotsHalo
+from menu.LeafspotSize import leafspotSize
+from menu.LeafspotsMarg import leafspotsMarg
+from menu.Leaves import leaves
 
 if __name__ == "__main__":
     lista: list = []
@@ -25,4 +35,24 @@ if __name__ == "__main__":
     lista.append(fruitingBodies)
     fruitPods: str = fruitPods()
     lista.append(fruitPods)
+    germination: str = germination()
+    lista.append(germination)
+    hail: str = hail()
+    lista.append(hail)
+    intDiscolor: str = intDiscolor()
+    lista.append(intDiscolor)
+    leafMalf: str = leafMalf()
+    lista.append(leafMalf)
+    leafMild: str = leafMild()
+    lista.append(leafMild)
+    leafShread: str = leafShread()
+    lista.append(leafShread)
+    leafspotsHalo: str = leafspotsHalo()
+    lista.append(leafspotsHalo)
+    leafspotSize: str = leafspotSize()
+    lista.append(leafspotSize)
+    leafspotsMarg: str = leafspotsMarg()
+    lista.append(leafspotsMarg)
+    leaves: str = leaves()
+    lista.append(leaves)
     print(lista)
