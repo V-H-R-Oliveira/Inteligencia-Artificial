@@ -16,6 +16,12 @@ from menu.LeafspotsHalo import leafspotsHalo
 from menu.LeafspotSize import leafspotSize
 from menu.LeafspotsMarg import leafspotsMarg
 from menu.Leaves import leaves
+from menu.Lodging import lodging
+from menu.MoldGrowth import moldGrowth
+from menu.Mycelium import mycelium
+from menu.PlantGrowth import plantGrowth
+from menu.PlantStand import plantStand
+from menu.Precip import precip
 
 if __name__ == "__main__":
     lista: list = []
@@ -55,4 +61,16 @@ if __name__ == "__main__":
     lista.append(leafspotsMarg)
     leaves: str = leaves()
     lista.append(leaves)
+    lodging: str = lodging()
+    lista.append(lodging)
+    moldGrowth: str = moldGrowth()
+    lista.append(moldGrowth)
+    mycelium: str = mycelium()
+    lista.append(mycelium)
+    plantGrowth: str = plantGrowth()
+    lista.append(plantGrowth)
+    plantStand: str = plantStand()
+    lista.append(plantStand)
+    precip: str = precip()
+    lista.append(precip)
     print(lista)
