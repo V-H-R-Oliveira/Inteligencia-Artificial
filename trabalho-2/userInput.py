@@ -22,6 +22,17 @@ from menu.Mycelium import mycelium
 from menu.PlantGrowth import plantGrowth
 from menu.PlantStand import plantStand
 from menu.Precip import precip
+from menu.Roots import roots
+from menu.Sclerotia import sclerotia
+from menu.Seed import seed
+from menu.SeedDiscolor import seedDiscolor
+from menu.SeedSize import seedSize
+from menu.SeedTmt import seedTmt
+from menu.Severity import severity
+from menu.Shriveling import shriveling
+from menu.Stem import stem
+from menu.StemCankers import stemCankers
+from menu.Temp import temp
 
 def userInput() -> list:
     lista: list = []
@@ -73,5 +84,26 @@ def userInput() -> list:
     lista.append(plantStands)
     precips: str = precip()
     lista.append(precips)
-
+    rootss: str = roots()
+    lista.append(rootss)
+    sclerotias: str = sclerotia()
+    lista.append(sclerotias)
+    seeds: str = seed()
+    lista.append(seeds)
+    seedDiscolors: str = seedDiscolor()
+    lista.append(seedDiscolors)
+    seedSizes: str = seedSize()
+    lista.append(seedSizes)
+    seedTmts: str = seedTmt()
+    lista.append(seedTmts)
+    severitys: str = severity()
+    lista.append(severitys)
+    shrivelings: str = shriveling()
+    lista.append(shrivelings)
+    stems: str = stem()
+    lista.append(stems)
+    stemCankerss: str = stemCankers()
+    lista.append(stemCankerss)
+    temps: str = temp()
+    lista.append(temps)
     return lista

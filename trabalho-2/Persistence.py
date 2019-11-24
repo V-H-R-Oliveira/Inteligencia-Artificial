@@ -56,3 +56,31 @@ class Persistence(object):
         except Exception as error:
             self.__conn.close()
             raise error
+    
+    def fetchCasos(self) -> list:
+        data: list = []
+        cursor = self.__conn.cursor()
+        QUERY: str = "SELECT * FROM casos;"
+        try:
+            cursor.execute(QUERY)
+            self.__conn.commit()
+            data = cursor.fetchall()
+            self.__conn.close()
+            return data
+        except Exception as error:
+            self.__conn.close()
+            raise error
+
+    def fetchPesos(self, atributo: str) -> list:
+        data: list = []
+        cursor = self.__conn.cursor()
+        QUERY: str = "SELECT peso, valor FROM atributos WHERE atributo=\'{}\';".format(atributo)
+        try:
+            cursor.execute(QUERY)
+            self.__conn.commit()
+            data = cursor.fetchall()
+            self.__conn.close()
+            return data
+        except Exception as error:
+            self.__conn.close()
+            raise error
