@@ -23,5 +23,6 @@ class Pesos(AbstractBase):
         try:
             self.dbHandler.connect()
             self.dbHandler.insert("pesos", data)
+            self.dbHandler.closeConnection()
         except Exception as error:
             raise error

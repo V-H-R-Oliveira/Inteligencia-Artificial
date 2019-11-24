@@ -23,5 +23,6 @@ class Atributos(AbstractBase):
         try:
             self.dbHandler.connect()
             self.dbHandler.insert("atributos", data)
+            self.dbHandler.closeConnection()
         except Exception as e:
             raise e

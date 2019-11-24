@@ -23,5 +23,6 @@ class Casos(AbstractBase):
         try:
             self.dbHandler.connect()
             self.dbHandler.insert("casos", data)
+            self.dbHandler.closeConnection()
         except Exception as error:
             raise error

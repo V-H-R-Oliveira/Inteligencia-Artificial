@@ -4,4 +4,5 @@ def fetchData(tablename: str) -> list:
     dbHandler: Persistence = Persistence()
     dbHandler.connect()
     data: list = dbHandler.fetchAtributos(tablename)
+    dbHandler.closeConnection()
     return data

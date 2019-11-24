@@ -18,7 +18,6 @@ class Persistence(object):
             try:
                 cursor.executemany(QUERY, data)
                 self.__conn.commit()
-                self.__conn.close()
             except Exception as error:
                 self.__conn.close()
                 raise error
@@ -27,7 +26,6 @@ class Persistence(object):
             try:
                 cursor.executemany(QUERY, data)
                 self.__conn.commit()
-                self.__conn.close()
             except Exception as error:
                 self.__conn.close()
                 raise error
@@ -36,7 +34,6 @@ class Persistence(object):
             try:
                 cursor.executemany(QUERY, data)
                 self.__conn.commit()
-                self.__conn.close()
             except Exception as error:
                 self.__conn.close()
                 raise error
@@ -51,7 +48,6 @@ class Persistence(object):
             cursor.execute(QUERY)
             self.__conn.commit()
             data = cursor.fetchall()
-            self.__conn.close()
             return data
         except Exception as error:
             self.__conn.close()
@@ -65,7 +61,6 @@ class Persistence(object):
             cursor.execute(QUERY)
             self.__conn.commit()
             data = cursor.fetchall()
-            self.__conn.close()
             return data
         except Exception as error:
             self.__conn.close()
@@ -79,8 +74,13 @@ class Persistence(object):
             cursor.execute(QUERY)
             self.__conn.commit()
             data = cursor.fetchall()
-            self.__conn.close()
             return data
         except Exception as error:
             self.__conn.close()
+            raise error
+    
+    def closeConnection(self):
+        try:
+            self.__conn.close()
+        except Exception as error:
             raise error

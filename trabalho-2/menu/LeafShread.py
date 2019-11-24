@@ -7,7 +7,7 @@ def getUserInput() -> str:
     if op == 0:
         leafShread = "Desconhecido"
     elif op == 1:
-        leafShread = "Absent"
+        leafShread = "absent"
     elif op == 2:
         leafShread = "Present"  
     else: 

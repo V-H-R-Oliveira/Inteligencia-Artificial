@@ -7,7 +7,7 @@ def getUserInput() -> str:
     if op == 0:
         areaDamage = "Desconhecido"
     elif op == 1:
-        areaDamage = "scatterred"
+        areaDamage = "scattered"
     elif op == 2:
         areaDamage = "low_areas"
     elif op == 3:
