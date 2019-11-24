@@ -34,9 +34,10 @@ def test():
     'Abnorm', 'Above_soil', 'norm']
     aux: int = 2
     simLocal: list = []
+    final: dict = {}
 
     for index, caso in enumerate(casos):
-        print("[Base] Caso {} - {}".format(casos[index][0], casos[index][1]))
+        #print("[Base] Caso {} - {}".format(casos[index][0], casos[index][1]))
         for index_labels, label in enumerate(LABELS):
             pesos: list = dbHandler.fetchPesos(label)
             # print(label, index_labels, pesos)
@@ -49,8 +50,8 @@ def test():
             simLocal.append(res)
             aux += 1
         aux = 2
-    
-    print(len(simLocal))
+        final[casos[index][0]] = simLocal
+    print(final)
     dbHandler.closeConnection()
 
 test()
