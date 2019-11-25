@@ -15,7 +15,7 @@ class Similaridade(object):
         for sim in simLocal.values():
             for index, value in enumerate(sim):
                 somaSimLocal += value * pesos[index][1]
-            aux: float = somaSimLocal / somaPesos
+            aux: float = (somaSimLocal / somaPesos) * 100
             resultados.append(aux)
             somaSimLocal = 0
         return resultados

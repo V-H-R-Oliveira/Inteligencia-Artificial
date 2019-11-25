@@ -19,7 +19,6 @@ def getUserInput() -> str:
     return areaDamage
 
 def areaDamaged() -> str:
-    print("\x1b[1m\x1b[32m Sistema RBC para classificação de doenças de Soja \x1b[0m")
     data: list = fetchData("area_damaged")
     showData(data)
     areaDamaged: str = getUserInput()

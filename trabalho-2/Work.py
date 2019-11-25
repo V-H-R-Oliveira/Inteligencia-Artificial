@@ -1,6 +1,7 @@
 from Persistence import Persistence
 from userInput import userInput
 from Similaridade import Similaridade
+import time
 
 LABELS: list = ["area_damaged", "canker_lesion", "crop_hist", 
 "date", "external_decay", "fruit_spots", 
@@ -16,7 +17,6 @@ LABELS: list = ["area_damaged", "canker_lesion", "crop_hist",
 "stem_cankers", "temp"]
 
 dbHandler: Persistence = Persistence()
-dbHandler.connect()
 
 def fetchCasos() -> list:
     casos: list = dbHandler.fetchCasos()
@@ -32,15 +32,7 @@ def extractDoencas(casos: list) -> list:
 def local() -> tuple:
     casos: list = fetchCasos()
     doencas: list = extractDoencas(casos)
-    test_case: list = userInput() # descomente isto, para o usuário poder digitar :)
-    # test_case: list = ['scattered', 'Brown', 'same_1st_yr', 
-    # 'Janeiro', 'firm_and_dry', 'Absent', 'Present', 
-    # 'Norm', '80_89%', 'Yes', 'Brown', 'Absent', 
-    # 'Upper_surf', 'absent', 'yellow_halos', 'lt_1/8', 
-    # 'no_w_s_marg', 'Norm', 'No', 'Absent', 'Present', 
-    # 'Abnorm', 'Normal', 'Normal', 'galls_cysts', 'Present', 
-    # 'Norm', 'Present', 'Norm', 'fungicida', 'severe', 'Absent', 
-    # 'Abnorm', 'Above_soil', 'norm']
+    test_case: list = userInput()
     aux: int = 2
     simLocal: list = []
     final: dict = {}
@@ -61,38 +53,59 @@ def local() -> tuple:
     
     return (final, test_case, doencas)
 
-def showResults(results: list, label: str, doencas: list):
+def showResults(results: list, doencas: list):
+    lista: list = list(zip(results, doencas))
+    lista.sort(key=lambda e: e[0], reverse=True)
     print(sep="\n\n")
-    print("\t\t\t\t\x1b[1m\x1b[4m\x1b[32m{}:\x1b[0m".format(label))
+    print("\t\t\t\t\x1b[1m\x1b[4m\x1b[32mSimilaridade Global ordenada por ordem decrescente dos valores:\x1b[0m")
     print("|--------------------------------------------------------------------------------|")
 
-    for index, result in enumerate(results):
-        print("\t\x1b[1m\x1b[34mCaso nº {} \x1b[1m\x1b[33m[{}]\x1b[0m = \x1b[1m\x1b[4m{}%\x1b[0m".format(index + 1, doencas[index], result * 100))
-        print("|--------------------------------------------------------------------------------|")
+    for index, result in enumerate(lista):
+        if result[0] != 100:
+            print("\t\x1b[1m\x1b[34mCaso nº {} \x1b[1m\x1b[33m[{}]\x1b[0m = \x1b[1m\x1b[4m{}%\x1b[0m".format(index + 1, result[1], result[0]))
+            print("|--------------------------------------------------------------------------------|")
+            time.sleep(1)
+        else:
+            print("\t\x1b[5m\x1b[1m\x1b[34mCaso nº {} \x1b[1m\x1b[33m[{}]\x1b[0m = \x1b[1m\x1b[4m{}%\x1b[0m".format(index + 1, result[1], result[0]))
+            print("|--------------------------------------------------------------------------------|")
+            break
+        
+def verifyFullSim(simGlobal: list) -> bool:
+    simGlobal.sort(reverse=True)
+    if simGlobal[0] == 100:
+        return False
+    return True
 
-# função que calcula a similaridade global
+def insertCasee(simLocal: tuple, userCase: list):
+    nomeDoenca: str = input("\x1b[1m\x1b[32mInforme o nome do caso:\x1b[0m ")
+    tmp: list = []
+    index: int = len(simLocal[0]) + 1
+    userCase.insert(0, index)
+    userCase.insert(1, nomeDoenca)
+    userCase = tuple(userCase)
+    tmp.append(userCase)
+    dbHandler.insertCase(userCase)
+    print("\x1b[1m\x1b[32mO seu caso foi inserido na base com sucesso\x1b[0m")
+
 def main():
-   pesos: list = dbHandler.fetchPesosTable() 
-   simLocal: tuple = local()
-   userCase: list = simLocal[1]
-   dbHandler.closeConnection()
-   simGlobal: list = Similaridade.globall(simLocal[0], pesos)
-   showResults(simGlobal, "Similaridade global", simLocal[2])
-   print()
-   op: int = int(input("\x1b[1m\x1b[33mVocê deseja atualizar ou inserir o \x1b[1m\x1b[32m{}\x1b[33m na base[1/2]:\x1b[0m ".format(userCase)))
-   if op == 1:
-       pass
-   elif op == 2:
-       nomeDoenca: str = input("\x1b[1m\x1b[32mInforme o nome do caso:\x1b[0m ")
-       tmp: list = []
-       index: int = len(simLocal[0]) + 1
-       userCase.insert(0, index)
-       userCase.insert(1, nomeDoenca)
-       userCase = tuple(userCase)
-       tmp.append(userCase)
-       dbHandler.connect()
-       dbHandler.insertCase(userCase)
-       dbHandler.closeConnection()
-       print("\x1b[1m\x1b[32mO seu caso foi inserido na base com sucesso\x1b[0m")      
-   else:
-       raise AttributeError("\x1b[1m\x1b[31mOpção inválida\x1b[0m")
+    dbHandler.connect()
+    pesos: list = dbHandler.fetchPesosTable() 
+    simLocal: tuple = local()
+    userCase: list = simLocal[1]
+    simGlobal: list = Similaridade.globall(simLocal[0], pesos)
+    showResults(simGlobal, simLocal[2])
+    
+    print()
+    if verifyFullSim(simGlobal):
+        op: int = int(input("\x1b[1m\x1b[33mVocê deseja atualizar ou inserir o \x1b[1m\x1b[32m{}\x1b[33m na base[1/2]:\x1b[0m ".format(userCase)))
+        if op == 1:
+            pass
+        elif op == 2:
+            insertCasee(simLocal, userCase)
+        else:
+            dbHandler.closeConnection()
+            raise AttributeError("\x1b[1m\x1b[31mOpção inválida\x1b[0m")
+        dbHandler.closeConnection()
+    else:
+        dbHandler.closeConnection()
+        print("\x1b[1m\x1b[31m Similaride global total foi encontrada\x1b[0m")

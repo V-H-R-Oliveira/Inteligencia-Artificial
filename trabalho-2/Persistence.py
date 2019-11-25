@@ -101,7 +101,7 @@ class Persistence(object):
         except Exception as error:
             self.__conn.close()
             raise error
-    
+        
     def closeConnection(self):
         try:
             self.__conn.close()

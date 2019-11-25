@@ -13,6 +13,9 @@ Caso não possua um rbc.db:
     - sqlite3> .exit
     - python3 fillDatabase.py
 
+Para executar os testes:
+- python3 main.py \< test/case\<numero\>.in
+
 Todo:
 - Atualizar base após os cálculos;
 - Impedir update ou insert se algum for 100%;
