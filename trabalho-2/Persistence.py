@@ -101,7 +101,43 @@ class Persistence(object):
         except Exception as error:
             self.__conn.close()
             raise error
-        
+    
+    def fetchCasosByPK(self) -> list:
+        cursor = self.__conn.cursor()
+        QUERY: str = "SELECT id, desc_doenca FROM casos;"
+        try:
+            data: list = []
+            cursor.execute(QUERY)
+            self.__conn.commit()
+            data = cursor.fetchall()
+            return data
+        except Exception as error:
+            self.__conn.close()
+            raise error
+    
+    # Peça de magia negra
+    def __prepareQuery(self, data: list, idCaso: int, labels: list) -> str:
+        labels[labels.index("date")] = "case_date"
+        QUERY: str = "UPDATE casos SET "
+        for index, item in enumerate(labels):
+            if index < 34:
+                QUERY += "{}=\'{}\',".format(item, data[index])
+            else:
+                QUERY += "{}=\'{}\'".format(item, data[index])
+        QUERY += " WHERE id={};".format(idCaso)
+        return QUERY
+
+    def updateCase(self, data: list, idCaso: int, labels: list):
+        QUERY: str = self.__prepareQuery(data, idCaso, labels)
+        cursor = self.__conn.cursor()
+        try:
+            cursor.execute(QUERY)
+            self.__conn.commit()
+        except Exception as error:
+            self.__conn.rollback()
+            self.__conn.close()
+            raise error
+
     def closeConnection(self):
         try:
             self.__conn.close()

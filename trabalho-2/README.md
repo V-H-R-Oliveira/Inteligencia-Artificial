@@ -16,7 +16,5 @@ Caso não possua um rbc.db:
 Para executar os testes:
 - python3 main.py \< test/case\<numero\>.in
 
-Todo:
-- Atualizar base após os cálculos;
-- Impedir update ou insert se algum for 100%;
-- Testes.
+No arquivo .in da pasta test:
+- As linhas 37 e 38 devem ser alteradas para poder salvar ou atualizar;

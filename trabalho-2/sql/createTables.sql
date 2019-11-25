@@ -51,5 +51,5 @@ CREATE TABLE casos(
     stem VARCHAR(50) NOT NULL,
     stem_cankers VARCHAR(50) NOT NULL,
     temp VARCHAR(50) NOT NULL,
-    CONSTRAINT pk_id PRIMARY KEY(id)
+    CONSTRAINT pk_id_descDoenca PRIMARY KEY(id, desc_doenca)
 );

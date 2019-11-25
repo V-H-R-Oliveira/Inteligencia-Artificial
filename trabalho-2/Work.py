@@ -62,7 +62,12 @@ def showResults(results: list, doencas: list):
 
     for index, result in enumerate(lista):
         if result[0] != 100:
-            print("\t\x1b[1m\x1b[34mCaso nº {} \x1b[1m\x1b[33m[{}]\x1b[0m = \x1b[1m\x1b[4m{}%\x1b[0m".format(index + 1, result[1], result[0]))
+            if index < 10:
+                print("\t\x1b[1m\x1b[34mCaso nº {} \x1b[1m\x1b[33m[{}]\x1b[0m = \x1b[1m\x1b[4m\x1b[32m{}%\x1b[0m".format(index + 1, result[1], result[0]))
+            elif index >= 10 and index < 20:
+                print("\t\x1b[1m\x1b[34mCaso nº {} \x1b[1m\x1b[33m[{}]\x1b[0m = \x1b[1m\x1b[4m\x1b[33m{}%\x1b[0m".format(index + 1, result[1], result[0]))
+            else:
+                print("\t\x1b[1m\x1b[34mCaso nº {} \x1b[1m\x1b[33m[{}]\x1b[0m = \x1b[1m\x1b[4m\x1b[31m{}%\x1b[0m".format(index + 1, result[1], result[0]))
             print("|--------------------------------------------------------------------------------|")
             time.sleep(1)
         else:
@@ -78,14 +83,27 @@ def verifyFullSim(simGlobal: list) -> bool:
 
 def insertCasee(simLocal: tuple, userCase: list):
     nomeDoenca: str = input("\x1b[1m\x1b[32mInforme o nome do caso:\x1b[0m ")
-    tmp: list = []
     index: int = len(simLocal[0]) + 1
     userCase.insert(0, index)
     userCase.insert(1, nomeDoenca)
-    userCase = tuple(userCase)
-    tmp.append(userCase)
-    dbHandler.insertCase(userCase)
+    dbHandler.insertCase(tuple(userCase))
     print("\x1b[1m\x1b[32mO seu caso foi inserido na base com sucesso\x1b[0m")
+
+def updateCaso(simLocal: tuple, userCase: list):
+    idCaso: int = int(input("\x1b[1m\x1b[32mInforme o id do caso:\x1b[0m "))
+    dbHandler.updateCase(tuple(userCase), idCaso, LABELS)
+    print("\x1b[1m\x1b[32mO caso foi atualizado\x1b[0m")
+
+def displayCasos():
+    casos: list = dbHandler.fetchCasosByPK()
+    print()
+    print("\t\x1b[1m\x1b[32mCasos disponíveis:\x1b[0m")
+    print("|--------------------------------------------------------------------------------|")
+    
+    for caso in casos:
+        print("\t\x1b[1m\x1b[34m{} -> \x1b[33m{}\x1b[0m".format(caso[0], caso[1]))
+        print("|--------------------------------------------------------------------------------|")
+        time.sleep(0.5)
 
 def main():
     dbHandler.connect()
@@ -99,7 +117,8 @@ def main():
     if verifyFullSim(simGlobal):
         op: int = int(input("\x1b[1m\x1b[33mVocê deseja atualizar ou inserir o \x1b[1m\x1b[32m{}\x1b[33m na base[1/2]:\x1b[0m ".format(userCase)))
         if op == 1:
-            pass
+            displayCasos()
+            updateCaso(simLocal, userCase)
         elif op == 2:
             insertCasee(simLocal, userCase)
         else:
