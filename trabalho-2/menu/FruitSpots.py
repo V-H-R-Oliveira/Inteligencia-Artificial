@@ -2,7 +2,7 @@ from menu.showData import showData
 from menu.fetchData import fetchData
 
 def getUserInput() -> str:
-    op: int = int(input("\x1b[33mFruit Spots: \x1b[0m"))
+    op: int = int(input("\x1b[1m\x1b[33mFruit Spots: \x1b[0m"))
 
     if op == 0:
         fruitSpots = "Desconhecido"

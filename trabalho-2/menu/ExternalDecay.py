@@ -6,7 +6,7 @@ def percorrerDados(data: list):
         print("--------------------")
 
 def getUserInput() -> str:
-    op: int = int(input("\x1b[33mExternal Decay: \x1b[0m"))
+    op: int = int(input("\x1b[1m\x1b[33mExternal Decay: \x1b[0m"))
 
     if op == 0:
         externalDecay = "Desconhecido"

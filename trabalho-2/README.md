@@ -15,4 +15,5 @@ Caso não possua um rbc.db:
 
 Todo:
 - Atualizar base após os cálculos;
+- Impedir update ou insert se algum for 100%;
 - Testes.

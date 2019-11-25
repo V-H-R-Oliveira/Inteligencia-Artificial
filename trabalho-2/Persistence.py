@@ -91,7 +91,17 @@ class Persistence(object):
         except Exception as error:
             self.__conn.close()
             raise error
-
+    
+    def insertCase(self, data: list):
+        QUERY: str = "INSERT INTO casos (id, desc_doenca, area_damaged, canker_lesion, crop_hist, case_date, external_decay, fruit_spots, fruiting_bodies, fruit_pods, germination, hail, int_discolor, leaf_malf, leaf_mild, leaf_shread, leafspots_halo, leafspot_size, leafspots_marg, leaves, lodging, mold_growth, mycelium, plant_growth, plant_stand, precip, roots, sclerotia, seed, seed_discolor, seed_size, seed_tmt, severity, shriveling, stem, stem_cankers, temp) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);"
+        cursor = self.__conn.cursor()
+        try:
+            cursor.execute(QUERY, data)
+            self.__conn.commit()
+        except Exception as error:
+            self.__conn.close()
+            raise error
+    
     def closeConnection(self):
         try:
             self.__conn.close()
