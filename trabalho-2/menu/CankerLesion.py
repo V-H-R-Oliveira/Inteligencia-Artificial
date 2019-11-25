@@ -11,7 +11,7 @@ def getUserInput() -> str:
     elif op == 2:
         cankerLesion = "Brown"
     elif op == 3:
-        cankerLesion = "dk_brown"
+        cankerLesion = "dk_brown_blk"
     elif op == 4:
         cankerLesion = "tan"
     else: 

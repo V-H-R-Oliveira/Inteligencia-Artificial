@@ -11,7 +11,7 @@ def getUserInput() -> str:
     elif op == 2:
         fruitSpots = "Colored"
     elif op == 3:
-        fruitSpots = "Brow-w/blk_specks"
+        fruitSpots = "Brown_w/blk_specks"
     elif op == 4:
         fruitSpots = "Distort"
     elif op == 5:

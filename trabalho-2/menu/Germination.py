@@ -7,7 +7,7 @@ def getUserInput() -> str:
     if op == 0:
         germination = "Desconhecido"
     elif op == 1:
-        germination = "90_100¨%"
+        germination = "90_100%"
     elif op == 2:
         germination = "80_89%"
     elif op == 3:

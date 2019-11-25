@@ -9,7 +9,7 @@ def getUserInput() -> str:
     elif op == 1:
         stemCankers = "Absent"
     elif op == 2:
-        stemCankers = "below_sool"
+        stemCankers = "below_soil"
     elif op == 3:
         stemCankers = "Above_soil"
     elif op == 4:

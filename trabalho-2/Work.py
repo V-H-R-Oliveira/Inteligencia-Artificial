@@ -24,14 +24,7 @@ def fetchCasos() -> list:
 # test case irá vir do userInput
 def test():
     casos: list = fetchCasos()
-    test_case: list = ['scattered', 'Brown', 'same_1st_yr', 
-    'Janeiro', 'firm_and_dry', 'Absent', 'Present', 
-    'Norm', '80_89%', 'Yes', 'Brown', 'Absent', 
-    'Upper_surf', 'absent', 'yellow_halos', 'lt_1/8', 
-    'no_w_s_marg', 'Norm', 'No', 'Absent', 'Present', 
-    'Abnorm', 'Normal', 'Normal', 'galls_cysts', 'Present', 
-    'Norm', 'Present', 'Norm', 'fungicida', 'severe', 'Absent', 
-    'Abnorm', 'Above_soil', 'norm']
+    test_case: list = userInput()
     aux: int = 2
     simLocal: list = []
     final: dict = {}
@@ -51,6 +44,7 @@ def test():
             aux += 1
         aux = 2
         final[casos[index][0]] = simLocal
+        
     print(final)
     dbHandler.closeConnection()
 

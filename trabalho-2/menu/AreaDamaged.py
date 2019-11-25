@@ -13,7 +13,7 @@ def getUserInput() -> str:
     elif op == 3:
         areaDamage = "upper_areas"
     elif op == 4:
-        areaDamage = "while_field"
+        areaDamage = "whole_field"
     else: 
         raise AttributeError("Atributo inválido")    
     return areaDamage
