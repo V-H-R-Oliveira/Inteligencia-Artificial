@@ -79,6 +79,19 @@ class Persistence(object):
             self.__conn.close()
             raise error
     
+    def fetchPesosTable(self) -> list:
+        data: list = []
+        cursor = self.__conn.cursor()
+        QUERY: str = "SELECT atributo, peso FROM pesos;"
+        try:
+            cursor.execute(QUERY)
+            self.__conn.commit()
+            data = cursor.fetchall()
+            return data
+        except Exception as error:
+            self.__conn.close()
+            raise error
+
     def closeConnection(self):
         try:
             self.__conn.close()
