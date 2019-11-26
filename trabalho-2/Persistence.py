@@ -19,6 +19,7 @@ class Persistence(object):
                 cursor.executemany(QUERY, data)
                 self.__conn.commit()
             except Exception as error:
+                self.__conn.rollback()
                 self.__conn.close()
                 raise error
         elif tableName.lower() == "atributos":
@@ -27,6 +28,7 @@ class Persistence(object):
                 cursor.executemany(QUERY, data)
                 self.__conn.commit()
             except Exception as error:
+                self.__conn.rollback()
                 self.__conn.close()
                 raise error
         elif tableName.lower() == "casos":
@@ -35,9 +37,12 @@ class Persistence(object):
                 cursor.executemany(QUERY, data)
                 self.__conn.commit()
             except Exception as error:
+                self.__conn.rollback()
                 self.__conn.close()
                 raise error
         else:
+            self.__conn.rollback()
+            self.__conn.close()
             raise AttributeError("O nome da tabela é inválido")
     
     def fetchAtributos(self, element: str) -> list:
@@ -50,6 +55,7 @@ class Persistence(object):
             data = cursor.fetchall()
             return data
         except Exception as error:
+            self.__conn.rollback()
             self.__conn.close()
             raise error
     
@@ -63,6 +69,7 @@ class Persistence(object):
             data = cursor.fetchall()
             return data
         except Exception as error:
+            self.__conn.rollback()
             self.__conn.close()
             raise error
 
@@ -76,6 +83,7 @@ class Persistence(object):
             data = cursor.fetchall()
             return data
         except Exception as error:
+            self.__conn.rollback()
             self.__conn.close()
             raise error
     
@@ -89,6 +97,7 @@ class Persistence(object):
             data = cursor.fetchall()
             return data
         except Exception as error:
+            self.__conn.rollback()
             self.__conn.close()
             raise error
     
@@ -99,6 +108,7 @@ class Persistence(object):
             cursor.execute(QUERY, data)
             self.__conn.commit()
         except Exception as error:
+            self.__conn.rollback()
             self.__conn.close()
             raise error
     
@@ -112,6 +122,7 @@ class Persistence(object):
             data = cursor.fetchall()
             return data
         except Exception as error:
+            self.__conn.rollback()
             self.__conn.close()
             raise error
     
