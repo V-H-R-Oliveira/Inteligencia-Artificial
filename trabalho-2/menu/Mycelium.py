@@ -3,16 +3,8 @@ from menu.showData import showData
 
 def getUserInput() -> str:
     op: int = int(input("\x1b[1m\x1b[33mMycelium: \x1b[0m"))
-
-    if op == 0:
-        mycelium = "Desconhecido"
-    elif op == 1:
-        mycelium = "Absent"
-    elif op == 2:
-        mycelium = "Present" 
-    else: 
-        raise AttributeError("Atributo inválido")    
-    return mycelium
+    options: dict = {0: "Desconhecido", 1: "Absent", 2: "Present"}
+    return options.get(op, None)
 
 def mycelium() -> str:
     data: list = fetchData("mycelium")

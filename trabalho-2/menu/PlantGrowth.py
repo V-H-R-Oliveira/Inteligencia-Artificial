@@ -3,16 +3,8 @@ from menu.showData import showData
 
 def getUserInput() -> str:
     op: int = int(input("\x1b[1m\x1b[33mPlant growth: \x1b[0m"))
-
-    if op == 0:
-        plantGrowth = "Desconhecido"
-    elif op == 1:
-        plantGrowth = "Norm"
-    elif op == 2:
-        plantGrowth = "Abnorm" 
-    else: 
-        raise AttributeError("Atributo inválido")    
-    return plantGrowth
+    options: dict = {0: "Desconhecido", 1: "Norm", 2: "Abnorm"}
+    return options.get(op, None)
 
 def plantGrowth() -> str:
     data: list = fetchData("plant_growth")

@@ -3,20 +3,9 @@ from menu.showData import showData
 
 def getUserInput() -> str:
     op: int = int(input("\x1b[33mArea Damage: \x1b[0m"))
+    options: dict = {0: "Desconhecido", 1:"scattered", 2: "low_areas", 3:"upper_areas", 4:"whole_field"}
+    return options.get(op, None)
 
-    if op == 0:
-        areaDamage = "Desconhecido"
-    elif op == 1:
-        areaDamage = "scattered"
-    elif op == 2:
-        areaDamage = "low_areas"
-    elif op == 3:
-        areaDamage = "upper_areas"
-    elif op == 4:
-        areaDamage = "whole_field"
-    else: 
-        raise AttributeError("Atributo inválido")    
-    return areaDamage
 
 def areaDamaged() -> str:
     data: list = fetchData("area_damaged")

@@ -3,16 +3,8 @@ from menu.showData import showData
 
 def getUserInput() -> str:
     op: int = int(input("\x1b[1m\x1b[33mSclerotia: \x1b[0m"))
-
-    if op == 0:
-        sclerotia = "Desconhecido"
-    elif op == 1:
-        sclerotia = "Absent"
-    elif op == 2:
-        sclerotia = "Present"
-    else: 
-        raise AttributeError("Atributo inválido")    
-    return sclerotia
+    options: dict = {0: "Desconhecido", 1: "Absent", 2: "Present"}
+    return options.get(op, None)
 
 def sclerotia() -> str:
     data: list = fetchData("sclerotia")

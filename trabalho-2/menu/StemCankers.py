@@ -3,20 +3,8 @@ from menu.showData import showData
 
 def getUserInput() -> str:
     op: int = int(input("\x1b[1m\x1b[33mStem Cankers: \x1b[0m"))
-
-    if op == 0:
-        stemCankers = "Desconhecido"
-    elif op == 1:
-        stemCankers = "Absent"
-    elif op == 2:
-        stemCankers = "below_soil"
-    elif op == 3:
-        stemCankers = "Above_soil"
-    elif op == 4:
-        stemCankers = "Above_sec_nde"  
-    else: 
-        raise AttributeError("Atributo inválido")    
-    return stemCankers
+    options: dict = {0: "Desconhecido", 1: "Absent", 2: "below_soil", 3: "Above_soil", 4: "Above_sec_nde"}
+    return options.get(op, None)
 
 def stemCankers() -> str:
     data: list = fetchData("stem_cankers")

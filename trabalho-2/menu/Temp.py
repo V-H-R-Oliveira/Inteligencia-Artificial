@@ -3,18 +3,8 @@ from menu.showData import showData
 
 def getUserInput() -> str:
     op: int = int(input("\x1b[1m\x1b[33mTemp: \x1b[0m"))
-
-    if op == 0:
-        temp = "Desconhecido"
-    elif op == 1:
-        temp = "lt_norm"
-    elif op == 2:
-        temp = "norm"
-    elif op == 3:
-        temp = "gt_norm" 
-    else: 
-        raise AttributeError("Atributo inválido")    
-    return temp
+    options: dict = {0: "Desconhecido", 1: "lt_norm", 2: "norm", 3: "gt_norm"}
+    return options.get(op, None)
 
 def temp() -> str:
     data: list = fetchData("temp")

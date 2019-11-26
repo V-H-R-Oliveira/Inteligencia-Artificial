@@ -7,18 +7,8 @@ def percorrerDados(data: list):
 
 def getUserInput() -> str:
     op: int = int(input("\x1b[1m\x1b[33mExternal Decay: \x1b[0m"))
-
-    if op == 0:
-        externalDecay = "Desconhecido"
-    elif op == 1:
-        externalDecay = "Absent"
-    elif op == 2:
-        externalDecay = "firm_and_dry"
-    elif op == 3:
-        externalDecay = "watery"
-    else: 
-        raise AttributeError("Atributo inválido")    
-    return externalDecay
+    options: dict = {0: "Desconhecido", 1: "Absent", 2: "firm_and_dry", 3: "watery"}
+    return options.get(op, None)
 
 def externalDecay() -> str:
     data: list = fetchData("external_decay")

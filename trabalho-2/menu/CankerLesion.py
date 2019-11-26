@@ -3,20 +3,9 @@ from menu.showData import showData
 
 def getUserInput() -> str:
     op: int = int(input("\x1b[1m\x1b[33mCanker Lesion: \x1b[0m"))
-
-    if op == 0:
-        cankerLesion = "Desconhecido"
-    elif op == 1:
-        cankerLesion = "dna"
-    elif op == 2:
-        cankerLesion = "Brown"
-    elif op == 3:
-        cankerLesion = "dk_brown_blk"
-    elif op == 4:
-        cankerLesion = "tan"
-    else: 
-        raise AttributeError("Atributo inválido")    
-    return cankerLesion
+    options: dict = {0: "Desconhecido", 1: "dna", 2: "Brown", 3: "dk_brown_blk", 4: "tan"}
+    return options.get(op, None)
+  
 
 def cankerLesion() -> str:
     data: list = fetchData("canker_lesion")

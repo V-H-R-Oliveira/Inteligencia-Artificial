@@ -35,75 +35,15 @@ from menu.StemCankers import stemCankers
 from menu.Temp import temp
 
 def userInput() -> list:
-    lista: list = []
-    areaD: str = areaDamaged()
-    lista.append(areaD)
-    cankerL: str = cankerLesion()
-    lista.append(cankerL)
-    cropH: str = cropHist()
-    lista.append(cropH)
-    datee: str = date()
-    lista.append(datee)
-    externalDecayy: str = externalDecay()
-    lista.append(externalDecayy)
-    fruitSpotss: str = fruitSpots()
-    lista.append(fruitSpotss)
-    fruitingBodiess: str = fruitingBodies()
-    lista.append(fruitingBodiess)
-    fruitPodss: str = fruitPods()
-    lista.append(fruitPodss)
-    germinations: str = germination()
-    lista.append(germinations)
-    hails: str = hail()
-    lista.append(hails)
-    intDiscolors: str = intDiscolor()
-    lista.append(intDiscolors)
-    leafMalfs: str = leafMalf()
-    lista.append(leafMalfs)
-    leafMilds: str = leafMild()
-    lista.append(leafMilds)
-    leafShreads: str = leafShread()
-    lista.append(leafShreads)
-    leafspotsHalos: str = leafspotsHalo()
-    lista.append(leafspotsHalos)
-    leafspotSizes: str = leafspotSize()
-    lista.append(leafspotSizes)
-    leafspotsMargs: str = leafspotsMarg()
-    lista.append(leafspotsMargs)
-    leavess: str = leaves()
-    lista.append(leavess)
-    lodgings: str = lodging()
-    lista.append(lodgings)
-    moldGrowths: str = moldGrowth()
-    lista.append(moldGrowths)
-    myceliums: str = mycelium()
-    lista.append(myceliums)
-    plantGrowths: str = plantGrowth()
-    lista.append(plantGrowths)
-    plantStands: str = plantStand()
-    lista.append(plantStands)
-    precips: str = precip()
-    lista.append(precips)
-    rootss: str = roots()
-    lista.append(rootss)
-    sclerotias: str = sclerotia()
-    lista.append(sclerotias)
-    seeds: str = seed()
-    lista.append(seeds)
-    seedDiscolors: str = seedDiscolor()
-    lista.append(seedDiscolors)
-    seedSizes: str = seedSize()
-    lista.append(seedSizes)
-    seedTmts: str = seedTmt()
-    lista.append(seedTmts)
-    severitys: str = severity()
-    lista.append(severitys)
-    shrivelings: str = shriveling()
-    lista.append(shrivelings)
-    stems: str = stem()
-    lista.append(stems)
-    stemCankerss: str = stemCankers()
-    lista.append(stemCankerss)
-    temps: str = temp()
-    lista.append(temps)
-    return lista
+    casos: list = [
+        areaDamaged, cankerLesion, cropHist, date, externalDecay, 
+        fruitSpots, fruitingBodies, fruitPods, germination, hail, intDiscolor,
+        leafMalf, leafMild, leafShread, leafspotsHalo, leafspotSize, leafspotsMarg, 
+        leaves, lodging, moldGrowth, mycelium, plantGrowth, plantStand, precip, roots, 
+        sclerotia, seed,seedDiscolor,seedSize,seedTmt,severity, shriveling, stem, stemCankers, temp
+        ]
+
+    respostas: list = []
+    for element in casos:
+        respostas.append(element())
+    return respostas

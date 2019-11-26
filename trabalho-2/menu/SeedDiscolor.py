@@ -3,16 +3,8 @@ from menu.showData import showData
 
 def getUserInput() -> str:
     op: int = int(input("\x1b[1m\x1b[33mSeed Discolor: \x1b[0m"))
-
-    if op == 0:
-        seedDiscolor = "Desconhecido"
-    elif op == 1:
-        seedDiscolor = "Absent"
-    elif op == 2:
-        seedDiscolor = "Present"
-    else: 
-        raise AttributeError("Atributo inválido")    
-    return seedDiscolor
+    options: dict = {0: "Desconhecido", 1: "Absent", 2: "Present"}
+    return options.get(op, None)
 
 def seedDiscolor() -> str:
     data: list = fetchData("seed_discolor")

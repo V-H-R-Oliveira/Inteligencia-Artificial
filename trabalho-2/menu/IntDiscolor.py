@@ -3,18 +3,8 @@ from menu.showData import showData
 
 def getUserInput() -> str:
     op: int = int(input("\x1b[1m\x1b[33mInt discolor: \x1b[0m"))
-
-    if op == 0:
-        intDiscolor = "Desconhecido"
-    elif op == 1:
-        intDiscolor = "None"
-    elif op == 2:
-        intDiscolor = "Brown"
-    elif op == 3:
-        intDiscolor = "Black"
-    else: 
-        raise AttributeError("Atributo inválido")    
-    return intDiscolor
+    options: dict = {0: "Desconhecido", 1: "None", 2: "Brown", 3: "Black"}
+    return options.get(op, None)
 
 def intDiscolor() -> str:
     data: list = fetchData("int_discolor")
