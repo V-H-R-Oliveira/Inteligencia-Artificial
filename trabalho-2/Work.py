@@ -103,7 +103,7 @@ def displayCasos():
     for caso in casos:
         print("\t\x1b[1m\x1b[34m{} -> \x1b[33m{}\x1b[0m".format(caso[0], caso[1]))
         print("|--------------------------------------------------------------------------------|")
-        time.sleep(0.5)
+        time.sleep(0.2)
 
 def main():
     dbHandler.connect()

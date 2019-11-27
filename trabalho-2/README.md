@@ -6,12 +6,7 @@ A base de dados já vem preparada, portanto, é só executar: python3 main.py
 
 Dependências - Sqlite3 (sudo apt install sqlite3)
 
-Caso não possua um rbc.db:
-- No terminal do Linux, digite:
-    - sqlite3 \<database.db\> -- cria ou abre um banco de dados 
-    - sqlite3> .read ./sql/createTables.sql
-    - sqlite3> .exit
-    - python3 fillDatabase.py
+Caso não possua um rbc.db, execute o arquivo fillDatabase.py (python3 fillDatabase.py)
 
 Para executar os testes:
 - python3 main.py \< test/case\<numero\>.in

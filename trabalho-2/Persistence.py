@@ -10,6 +10,19 @@ class Persistence(object):
             self.__conn: sqlite3 = sqlite3.connect(self.__dbName)
         except Exception as error:
             raise error
+    
+    def createSchema(self):
+        with open(os.getcwd() + "/sql/createTables.sql", "r") as fd:
+            schema: str = fd.read()
+        try:
+            self.connect()
+            cursor = self.__conn.cursor()        
+            cursor.executescript(schema)
+            self.__conn.close()
+        except Exception as error:
+            self.__conn.rollback()
+            self.__conn.close()
+            raise error
 
     def insert(self, tableName: str, data: list):
         cursor = self.__conn.cursor()
