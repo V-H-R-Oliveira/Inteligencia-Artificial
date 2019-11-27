@@ -67,9 +67,9 @@ def showResults(results: list, doencas: list):
             elif index >= 10 and index < 20:
                 print("\t\x1b[1m\x1b[34mCaso nº {} \x1b[1m\x1b[33m[{}]\x1b[0m = \x1b[1m\x1b[4m\x1b[33m{}%\x1b[0m".format(index + 1, result[1], result[0]))
             else:
-                print("\t\x1b[1m\x1b[34mCaso nº {} \x1b[1m\x1b[33m[{}]\x1b[0m = \x1b[1m\x1b[4m\x1b[31m{}%\x1b[0m".format(index + 1, result[1], result[0]))
+                print("\t\x1b[1m\x1b[34mCaso nº {} \x1b[1m\x1b[33m[{}]\x1b[0m = \x1b[1m\x1b[47m\x1b[31m{}%\x1b[0m".format(index + 1, result[1], result[0]))
             print("|--------------------------------------------------------------------------------|")
-            time.sleep(1)
+            time.sleep(0.3)
         else:
             print("\t\x1b[5m\x1b[1m\x1b[34mCaso nº {} \x1b[1m\x1b[33m[{}]\x1b[0m = \x1b[1m\x1b[4m{}%\x1b[0m".format(index + 1, result[1], result[0]))
             print("|--------------------------------------------------------------------------------|")
@@ -115,7 +115,7 @@ def main():
     
     print()
     if verifyFullSim(simGlobal):
-        op: int = int(input("\x1b[1m\x1b[33mVocê deseja atualizar ou inserir o \x1b[1m\x1b[32m{}\x1b[33m na base[1/2]:\x1b[0m ".format(userCase)))
+        op: int = int(input("\x1b[1m\x1b[33mVocê deseja atualizar ou inserir o caso \x1b[1m\x1b[32m{}\x1b[33m na base[1/2]:\x1b[0m ".format(userCase)))
         if op == 1:
             displayCasos()
             updateCaso(simLocal, userCase)

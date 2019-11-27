@@ -44,6 +44,13 @@ def userInput() -> list:
         ]
 
     respostas: list = []
+    tmp: str = ""
+
     for element in casos:
-        respostas.append(element())
+        tmp: str = element()
+        if tmp == None:
+            while tmp == None:
+                print("\x1b[1m\x1b[47m\x1b[5m\x1b[31mA sua resposta não coincide com nenhuma opção da base de casos\x1b[0m")
+                tmp = element()
+        respostas.append(tmp)
     return respostas

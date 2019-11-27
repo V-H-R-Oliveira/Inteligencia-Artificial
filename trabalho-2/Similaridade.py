@@ -1,5 +1,7 @@
+from functools import lru_cache
 class Similaridade(object):
     @staticmethod
+    @lru_cache(maxsize=None)
     def local(maior: int, menor: int, peso: int, coluna: int) -> float:
         return 1 - ((abs(peso - coluna)) / (maior - menor))
     
